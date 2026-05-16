@@ -1,651 +1,440 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>POLIPONI BALI Ticketing</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>POLIPONI BALI</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-    }
+body{
+background:#f4f4f4;
+color:#111;
+}
 
-    body{
-      background:#f3f5fb;
-      color:#111;
-      overflow-x:hidden;
-    }
+.container{
+max-width:480px;
+margin:auto;
+background:white;
+min-height:100vh;
+}
 
-    .container{
-      width:100%;
-      min-height:100vh;
-      padding:20px;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-    }
+.banner{
+position:relative;
+height:340px;
+overflow:hidden;
+border-bottom-left-radius:30px;
+border-bottom-right-radius:30px;
+}
 
-    .card{
-      width:100%;
-      max-width:1100px;
-      background:#ffffff;
-      border-radius:28px;
-      overflow:hidden;
-      box-shadow:0 10px 40px rgba(0,0,0,0.4);
-      border:1px solid rgba(255,255,255,0.08);
-    }
+.banner img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
 
-    .banner{
-      width:100%;
-      height:320px;
-      background:url('banner.png') center/cover;
-      position:relative;
-    }
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top, rgba(0,0,0,.95), rgba(0,0,0,.2));
+display:flex;
+align-items:flex-end;
+padding:25px;
+}
 
-    .overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    }
+.overlay-content h1{
+color:white;
+font-size:38px;
+font-weight:800;
+line-height:1;
+margin-bottom:10px;
+}
 
-    .event-info{
-      position:absolute;
-      bottom:25px;
-      left:25px;
-      z-index:2;
-    }
+.overlay-content p{
+color:#ddd;
+font-size:15px;
+margin-top:5px;
+}
 
-    .event-info h1{
-      font-size:42px;
-      font-weight:800;
-    }
+.steps{
+background:#050505;
+padding:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
 
-    .event-info p{
-      margin-top:8px;
-      opacity:0.9;
-      font-size:15px;
-    }
+.step{
+background:#151515;
+color:#888;
+padding:15px;
+text-align:center;
+border-radius:18px;
+font-weight:600;
+}
 
-    .steps{
-      display:flex;
-      justify-content:space-between;
-      padding:20px 30px;
-      background:#111;
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      flex-wrap:wrap;
-      gap:10px;
-    }
+.step.active{
+background:linear-gradient(135deg,#00bfff,#0047ff);
+color:white;
+box-shadow:0 0 20px rgba(0,119,255,.5);
+}
 
-    .step{
-      flex:1;
-      min-width:120px;
-      text-align:center;
-      padding:12px;
-      border-radius:14px;
-      background:#1f1f1f;
-      font-size:14px;
-      transition:0.3s;
-    }
+.content{
+padding:24px;
+}
 
-    .active{
-      background:linear-gradient(135deg,#ff00cc,#3333ff);
-      font-weight:700;
-    }
+.section-title{
+font-size:34px;
+font-weight:800;
+margin-bottom:20px;
+}
 
-    .content{
-      padding:30px;
-    }
+.ticket-card{
+background:#0d0d0d;
+border-radius:28px;
+padding:25px;
+color:white;
+margin-bottom:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
 
-    .page{
-      display:none;
-      animation:fade 0.4s ease;
-    }
+.ticket-card h3{
+font-size:28px;
+margin-bottom:15px;
+}
 
-    .page.active-page{
-      display:block;
-    }
+.price{
+font-size:52px;
+font-weight:800;
+color:#00d5ff;
+margin-bottom:15px;
+}
 
-    @keyframes spin{
-      100%{
-        transform:rotate(360deg);
-      }
-    }
+.ticket-card button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:16px;
+background:linear-gradient(135deg,#00c6ff,#0047ff);
+color:white;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+}
 
-    @keyframes fade{
-      from{
-        opacity:0;
-        transform:translateY(10px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
+.form-group{
+margin-bottom:18px;
+}
 
-    h2{
-      margin-bottom:20px;
-      font-size:28px;
-    }
+.form-group label{
+display:block;
+font-weight:600;
+margin-bottom:8px;
+}
 
-    .ticket-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
+.form-group input,
+.form-group select,
+.form-group textarea{
+width:100%;
+padding:16px;
+border-radius:16px;
+border:2px solid #e5e5e5;
+font-size:15px;
+outline:none;
+}
 
-    .ticket-card{
-      background:#1f1f1f;
-      border-radius:20px;
-      padding:25px;
-      border:1px solid rgba(255,255,255,0.08);
-    }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+border-color:#0066ff;
+}
 
-    .ticket-card h3{
-      font-size:24px;
-      margin-bottom:10px;
-    }
+.next-btn,
+.pay-btn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#00c6ff,#0047ff);
+color:white;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+margin-top:10px;
+}
 
-    .price{
-      font-size:32px;
-      font-weight:800;
-      color:#00e5ff;
-      margin-bottom:15px;
-    }
+.qris-box{
+background:#0d0d0d;
+padding:25px;
+border-radius:28px;
+text-align:center;
+color:white;
+}
 
-    .ticket-card ul{
-      padding-left:18px;
-      opacity:0.9;
-      margin-bottom:20px;
-    }
+.qris-box img{
+width:100%;
+max-width:300px;
+background:white;
+padding:10px;
+border-radius:20px;
+margin-top:15px;
+}
 
-    .ticket-card button,
-    .btn{
-      width:100%;
-      border:none;
-      padding:14px;
-      border-radius:14px;
-      background:linear-gradient(135deg,#ff00cc,#3333ff);
-      color:white;
-      font-size:15px;
-      font-weight:700;
-      cursor:pointer;
-      transition:0.3s;
-    }
+.timer{
+font-size:32px;
+font-weight:800;
+margin-top:20px;
+color:#00d5ff;
+}
 
-    .ticket-card button:hover,
-    .btn:hover{
-      transform:translateY(-2px);
-    }
+.upload-box{
+margin-top:25px;
+text-align:left;
+}
 
-    .form-group{
-      margin-bottom:18px;
-    }
+.upload-box input{
+margin-top:10px;
+width:100%;
+padding:12px;
+background:white;
+border-radius:12px;
+}
 
-    .form-group label{
-      display:block;
-      margin-bottom:8px;
-      font-size:14px;
-    }
+.loading-screen,
+.success-screen{
+position:fixed;
+inset:0;
+background:#050505;
+display:none;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+color:white;
+z-index:999;
+padding:20px;
+text-align:center;
+}
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea{
-      width:100%;
-      padding:15px;
-      border:none;
-      border-radius:14px;
-      background:#242424;
-      color:white;
-      font-size:15px;
-    }
+.loader{
+width:90px;
+height:90px;
+border:8px solid rgba(255,255,255,.1);
+border-top:8px solid #00c6ff;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin-bottom:30px;
+}
 
-    .navigation{
-      margin-top:30px;
-      display:flex;
-      gap:15px;
-      justify-content:space-between;
-    }
+@keyframes spin{
+100%{transform:rotate(360deg)}
+}
 
-    .summary{
-      background:#1f1f1f;
-      border-radius:20px;
-      padding:25px;
-      margin-top:20px;
-      border:1px solid rgba(255,255,255,0.08);
-    }
+.success-icon{
+font-size:90px;
+margin-bottom:20px;
+}
 
-    .summary h3{
-      margin-bottom:15px;
-    }
+.success-screen h1{
+font-size:42px;
+margin-bottom:10px;
+}
 
-    .payment-layout{
-      display:grid;
-      grid-template-columns:1fr 350px;
-      gap:20px;
-    }
+.hidden{
+display:none;
+}
 
-    .payment-box,
-    .order-box{
-      background:#1f1f1f;
-      border-radius:20px;
-      padding:25px;
-      border:1px solid rgba(255,255,255,0.08);
-    }
+@media(max-width:480px){
+.overlay-content h1{
+font-size:32px;
+}
 
-    .method{
-      background:#262626;
-      padding:15px;
-      border-radius:14px;
-      margin-bottom:15px;
-      cursor:pointer;
-    }
+.section-title{
+font-size:28px;
+}
 
-    .method.active-method{
-      border:2px solid #00e5ff;
-    }
-
-    .qris-box{
-      margin-top:20px;
-      text-align:center;
-      background:white;
-      border-radius:20px;
-      padding:20px;
-      color:black;
-    }
-
-    .qris-box img{
-      width:100%;
-      max-width:280px;
-      border-radius:12px;
-    }
-
-    .timer{
-      margin-top:15px;
-      color:red;
-      font-weight:700;
-      font-size:18px;
-    }
-
-    .success{
-      text-align:center;
-      padding:30px;
-    }
-
-    .success h1{
-      font-size:48px;
-      margin-bottom:15px;
-      color:#00ff95;
-    }
-
-    .eticket{
-      margin-top:25px;
-      background:#1f1f1f;
-      border-radius:24px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .eticket-header{
-      background:linear-gradient(135deg,#ff00cc,#3333ff);
-      padding:25px;
-    }
-
-    .eticket-body{
-      padding:30px;
-    }
-
-    .qr-ticket{
-      width:180px;
-      margin:auto;
-      display:block;
-      border-radius:12px;
-      margin-top:20px;
-    }
-
-    @media(max-width:900px){
-      .payment-layout{
-        grid-template-columns:1fr;
-      }
-
-      .event-info h1{
-        font-size:28px;
-      }
-
-      .content{
-        padding:20px;
-      }
-    }
-  </style>
+.price{
+font-size:42px;
+}
+}
+</style>
 </head>
 <body>
 
 <div class="container">
-  <div class="card">
 
-    <div class="banner">
-      <div class="overlay"></div>
+<div class="banner">
+<img src="banner.png" alt="Banner">
+<div class="overlay">
+<div class="overlay-content">
+<h1>POLIPONI BALI</h1>
+<p>Bali United Training Center | Bali</p>
+<p>Live Concert & Festival Experience</p>
+</div>
+</div>
+</div>
 
-      <div class="event-info">
-        <h1>POLIPONI BALI</h1>
-        <p>Bali United Training Center | Bali</p>
-        <p>Live Concert & Festival Experience</p>
-      </div>
-    </div>
+<div class="steps">
+<div class="step active">1. Tiket</div>
+<div class="step">2. Pemesan</div>
+<div class="step">3. Pengunjung</div>
+<div class="step">4. Pembayaran</div>
+<div class="step" style="grid-column:span 2;">5. E-Ticket</div>
+</div>
 
-    <div class="steps">
-      <div class="step active" id="indicator1">1. Tiket</div>
-      <div class="step" id="indicator2">2. Pemesan</div>
-      <div class="step" id="indicator3">3. Pengunjung</div>
-      <div class="step" id="indicator4">4. Pembayaran</div>
-      <div class="step" id="indicator5">5. E-Ticket</div>
-    </div>
+<div class="content">
 
-    <div class="content">
+<div id="ticketPage">
+<h2 class="section-title">Pilih Tiket</h2>
 
-      <!-- STEP 1 -->
-      <div class="page active-page" id="page1">
-        <h2>Pilih Tiket</h2>
+<div class="ticket-card">
+<h3>Festival</h3>
+<div class="price">Rp250K</div>
+<p style="color:#aaa;margin-bottom:20px;">
+Akses konser festival premium.
+</p>
+<button onclick="nextToForm()">Pilih Tiket</button>
+</div>
+</div>
 
-        <div class="ticket-grid">
+<div id="formPage" class="hidden">
+<h2 class="section-title">Data Pemesan</h2>
 
-          <div class="ticket-card">
-            <h3>Festival</h3>
-            <div class="price">Rp250K</div>
+<div class="form-group">
+<label>Nama Lengkap</label>
+<input type="text" id="nama" required>
+</div>
 
-            <ul>
-              <li>General Access</li>
-              <li>Free Sticker</li>
-              <li>Concert Area</li>
-            </ul>
+<div class="form-group">
+<label>Email</label>
+<input type="email" id="email" required>
+</div>
 
-            <button onclick="selectTicket('Festival',250000)">Pilih Tiket</button>
-          </div>
+<div class="form-group">
+<label>Nomor WhatsApp</label>
+<input type="number" id="wa" required>
+</div>
 
-          <div class="ticket-card">
-            <h3>VIP</h3>
-            <div class="price">Rp500K</div>
+<div class="form-group">
+<label>Metode Pembayaran</label>
+<select id="metode" required>
+<option value="">Pilih Pembayaran</option>
+<option>DANA</option>
+<option>OVO</option>
+<option>GoPay</option>
+<option>ShopeePay</option>
+<option>Transfer Bank</option>
+</select>
+</div>
 
-            <ul>
-              <li>Front Stage</li>
-              <li>Exclusive Merchandise</li>
-              <li>VIP Entrance</li>
-            </ul>
+<button class="next-btn" onclick="goPayment()">Lanjut Pembayaran</button>
+</div>
 
-            <button onclick="selectTicket('VIP',500000)">Pilih Tiket</button>
-          </div>
+<div id="paymentPage" class="hidden">
+<h2 class="section-title">Pembayaran QRIS</h2>
 
-        </div>
-      </div>
+<div class="qris-box">
+<h3>Scan QRIS Pembayaran</h3>
+<img src="qris-bayar.png" alt="QRIS">
 
-      <!-- STEP 2 -->
-      <div class="page" id="page2">
-        <h2>Data Pemesan</h2>
+<div class="timer" id="countdown">30:00</div>
 
-        <div class="form-group">
-          <label>Nama Lengkap</label>
-          <input type="text" placeholder="Masukkan nama lengkap">
-        </div>
+<div class="upload-box">
+<label>Upload Bukti Pembayaran</label>
+<input type="file" id="bukti" required>
+</div>
 
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="Masukkan email">
-        </div>
+<button class="pay-btn" onclick="finishPayment()">
+Saya Sudah Bayar
+</button>
+</div>
+</div>
 
-        <div class="form-group">
-          <label>WhatsApp</label>
-          <input type="text" placeholder="08xxxxxxxxxx">
-        </div>
+</div>
+</div>
 
-        <div class="navigation">
-          <button class="btn" onclick="backStep(1)">Kembali</button>
-          <button class="btn" onclick="nextStep(3)">Lanjut</button>
-        </div>
-      </div>
+<div class="loading-screen" id="loadingScreen">
+<div class="loader"></div>
+<h2>Memverifikasi Pembayaran...</h2>
+<p>Mohon tunggu 30 detik</p>
+</div>
 
-      <!-- STEP 3 -->
-      <div class="page" id="page3">
-        <h2>Data Pengunjung</h2>
-
-        <div class="form-group">
-          <label>Nama Pengunjung</label>
-          <input type="text" placeholder="Nama pengunjung">
-        </div>
-
-        <div class="form-group">
-          <label>Instagram</label>
-          <input type="text" placeholder="@username">
-        </div>
-
-        <div class="form-group">
-          <label>Kota Asal</label>
-          <input type="text" placeholder="Kota asal">
-        </div>
-
-        <div class="navigation">
-          <button class="btn" onclick="backStep(2)">Kembali</button>
-          <button class="btn" onclick="nextStep(4)">Lanjut Pembayaran</button>
-        </div>
-      </div>
-
-      <!-- STEP 4 -->
-      <div class="page" id="page4">
-        <h2>Pembayaran</h2>
-
-        <div class="payment-layout">
-
-          <div class="payment-box">
-
-            <div class="method active-method">
-              ● Semua Metode Pembayaran
-              <p style="margin-top:6px;font-size:13px;opacity:0.7;">
-                Semua pembayaran akan menggunakan QRIS Event
-              </p>
-            </div>
-
-            <div class="qris-box">
-              <h3>Scan QRIS</h3>
-
-              <div style="background:linear-gradient(135deg,#003cff,#001f8f);padding:18px;border-radius:22px;color:white;box-shadow:0 10px 30px rgba(0,0,0,0.2);">
-
-                <h2 style="margin-bottom:8px;">
-                  POLIPONI BALI
-                </h2>
-
-                <p style="opacity:0.85;font-size:13px;">
-                  Official QRIS Payment
-                </p>
-
-                <div style="background:white;padding:15px;border-radius:18px;margin-top:18px;">
-                  <img src="qris-bayar.png" alt="QRIS">
-                </div>
-
-              </div>
-
-              <p style="margin-top:15px;font-weight:700;">
-                Total Pembayaran
-              </p>
-
-              <h2 id="paymentTotal" style="color:#111;">
-                Rp0
-              </h2>
-
-              <div class="timer" id="timer">
-                14:59
-              </div>
-
-              <p style="margin-top:15px; font-size:14px;">
-                DANA • OVO • GoPay • ShopeePay • Mobile Banking
-              </p>
-            </div>
-
-            <div class="form-group" style="margin-top:20px;">
-              <label>Upload Bukti Pembayaran</label>
-              <input type="file">
-            </div>
-
-          </div>
-
-          <div class="order-box">
-            <h3>Ringkasan Order</h3>
-
-            <p style="margin-top:15px; opacity:0.8;">
-              Tiket:
-            </p>
-
-            <h2 id="ticketName">Festival</h2>
-
-            <p style="margin-top:15px; opacity:0.8;">
-              Total:
-            </p>
-
-            <h1 id="summaryPrice" style="margin-top:10px; color:#00e5ff;">
-              Rp0
-            </h1>
-
-            <button class="btn" style="margin-top:25px;height:56px;font-size:16px;" onclick="finishPayment()">
-              Saya Sudah Bayar
-            </button>
-
-            <div id="loadingBox" style="display:none;margin-top:20px;text-align:center;">
-              <div style="width:70px;height:70px;border:6px solid #dbe4ff;border-top:6px solid #003cff;border-radius:50%;margin:auto;animation:spin 1s linear infinite;"></div>
-
-              <h3 style="margin-top:18px;color:#003cff;">
-                Memverifikasi Pembayaran...
-              </h3>
-
-              <p style="margin-top:10px;font-size:14px;opacity:0.7;">
-                Mohon tunggu sekitar 30 detik
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- STEP 5 -->
-      <div class="page" id="page5">
-
-        <div class="success">
-          <h1>PEMBAYARAN BERHASIL</h1>
-
-          <p>
-            E-ticket berhasil dibuat.
-          </p>
-
-          <div class="eticket">
-
-            <div class="eticket-header">
-              <h2>POLIPONI BALI E-TICKET</h2>
-              <p>Bali United Training Center | Bali</p>
-            </div>
-
-            <div class="eticket-body">
-              <h2 id="finalTicket">Festival Ticket</h2>
-
-              <p style="margin-top:10px; opacity:0.8;">
-                Valid for 1 person
-              </p>
-
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=POLIPONI-BALI-TICKET" class="qr-ticket">
-
-              <p style="margin-top:20px; opacity:0.8;">
-                Tunjukkan QR Code ini saat check-in event.
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
+<div class="success-screen" id="successScreen">
+<div class="success-icon">✅</div>
+<h1>Pembayaran Berhasil</h1>
+<p>E-Ticket berhasil dibuat</p>
 </div>
 
 <script>
-
-let currentStep = 1;
-let selectedTicket = 'Festival';
-let selectedPrice = 250000;
-
-function updateIndicators(step){
-  for(let i=1;i<=5;i++){
-    document.getElementById('indicator'+i).classList.remove('active');
-  }
-
-  document.getElementById('indicator'+step).classList.add('active');
+function nextToForm(){
+document.getElementById('ticketPage').classList.add('hidden');
+document.getElementById('formPage').classList.remove('hidden');
 }
 
-function showPage(step){
-  document.querySelectorAll('.page').forEach(page=>{
-    page.classList.remove('active-page');
-  });
+function goPayment(){
+let nama=document.getElementById('nama').value;
+let email=document.getElementById('email').value;
+let wa=document.getElementById('wa').value;
+let metode=document.getElementById('metode').value;
 
-  document.getElementById('page'+step).classList.add('active-page');
-
-  updateIndicators(step);
-  currentStep = step;
+if(!nama || !email || !wa || !metode){
+alert('Semua form wajib diisi!');
+return;
 }
 
-function selectTicket(name,price){
-  selectedTicket = name;
-  selectedPrice = price;
-
-  document.getElementById('ticketName').innerText = name;
-  document.getElementById('summaryPrice').innerText = 'Rp' + price.toLocaleString('id-ID');
-  document.getElementById('paymentTotal').innerText = 'Rp' + price.toLocaleString('id-ID');
-  document.getElementById('finalTicket').innerText = name + ' Ticket';
-
-  showPage(2);
+document.getElementById('formPage').classList.add('hidden');
+document.getElementById('paymentPage').classList.remove('hidden');
+startCountdown();
 }
 
-function nextStep(step){
-  showPage(step);
+let countdownStarted=false;
+
+function startCountdown(){
+if(countdownStarted) return;
+countdownStarted=true;
+
+let time=1800;
+let countdown=document.getElementById('countdown');
+
+let interval=setInterval(()=>{
+let minutes=Math.floor(time/60);
+let seconds=time%60;
+
+countdown.innerHTML=
+String(minutes).padStart(2,'0')+
+':' +
+String(seconds).padStart(2,'0');
+
+if(time<=0){
+clearInterval(interval);
+countdown.innerHTML='EXPIRED';
 }
 
-function backStep(step){
-  showPage(step);
+time--;
+},1000);
 }
 
 function finishPayment(){
+let bukti=document.getElementById('bukti').files.length;
 
-  const uploadInput = document.querySelector('input[type="file"]');
-
-  if(!uploadInput.value){
-    alert('Upload bukti pembayaran terlebih dahulu');
-    return;
-  }
-
-  document.getElementById('loadingBox').style.display='block';
-
-  setTimeout(()=>{
-    showPage(5);
-  },30000);
-
+if(!bukti){
+alert('Upload bukti pembayaran terlebih dahulu!');
+return;
 }
 
-let time = 899;
+document.getElementById('loadingScreen').style.display='flex';
 
-setInterval(()=>{
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
-
-  document.getElementById('timer').innerText =
-    `${minutes}:${seconds < 10 ? '0'+seconds : seconds}`;
-
-  if(time > 0){
-    time--;
-  }
-
-},1000);
-
+setTimeout(()=>{
+document.getElementById('loadingScreen').style.display='none';
+document.getElementById('successScreen').style.display='flex';
+},30000);
+}
 </script>
 
 </body>
