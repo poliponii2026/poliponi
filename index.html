@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>POLIPONI BALI 2026</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -195,74 +195,156 @@ margin-top:20px;
 transform:translateY(-2px);
 }
 
-/* PAYMENT PAGE */
+/* ========================= */
+/* PAYMENT PAGE NEW DESIGN */
+/* ========================= */
 
 .payment-page{
 display:none;
-padding:30px;
-max-width:650px;
+padding:20px;
+max-width:760px;
 margin:40px auto;
-background:white;
-border-radius:28px;
+background:#f7f7f7;
+border-radius:30px;
 box-shadow:0 10px 35px rgba(0,0,0,.08);
+border:4px solid #000;
+position:relative;
+overflow:hidden;
 }
 
 .payment-head{
-background:#0038d9;
-padding:18px;
-border-radius:20px;
-text-align:center;
-color:white;
-margin-bottom:22px;
+background:white;
+border:4px solid #000;
+padding:22px;
+border-radius:24px;
+margin-bottom:20px;
+position:relative;
+overflow:hidden;
+box-shadow:12px 12px 0 #000;
+}
+
+.payment-head::before{
+content:'POLIPONI';
+position:absolute;
+top:12px;
+left:20px;
+font-size:40px;
+font-weight:900;
+letter-spacing:3px;
+color:#111;
+opacity:.08;
 }
 
 .payment-head h2{
-font-size:24px;
-margin-bottom:5px;
+font-size:38px;
+font-weight:900;
+line-height:1;
+margin-bottom:8px;
+color:#ff0000;
+text-transform:uppercase;
+text-shadow:4px 4px 0 #000;
+}
+
+.payment-head p{
+font-size:15px;
+font-weight:700;
+color:#111;
 }
 
 .payment-method{
 display:flex;
-gap:12px;
-margin-bottom:20px;
+gap:14px;
+margin-bottom:22px;
 }
 
 .pay-box{
 flex:1;
-padding:14px;
-border-radius:16px;
-border:2px solid #0038d9;
+padding:16px;
+border-radius:18px;
+border:4px solid #000;
 text-align:center;
-font-weight:700;
-background:#f2f6ff;
+font-weight:900;
+font-size:16px;
+background:#ffe600;
+box-shadow:8px 8px 0 #000;
 }
 
 .timer{
-font-size:42px;
-font-weight:800;
+font-size:54px;
+font-weight:900;
 text-align:center;
-color:#ff2a2a;
-margin-bottom:20px;
+color:#ff0000;
+margin-bottom:25px;
+text-shadow:3px 3px 0 #000;
 }
 
 .qris-banner{
-background:linear-gradient(135deg,#0038d9,#0055ff);
-padding:22px;
-border-radius:24px;
-text-align:center;
-color:white;
-margin-bottom:20px;
+background:#ffffff;
+padding:25px;
+border-radius:28px;
+border:4px solid #000;
+margin-bottom:25px;
+position:relative;
+overflow:hidden;
+box-shadow:14px 14px 0 #000;
 }
 
-.qris-banner h2{
-margin-bottom:15px;
+.qris-top{
+display:flex;
+gap:6px;
+margin-bottom:18px;
+}
+
+.color-box{
+width:35px;
+height:35px;
+border:3px solid #000;
+}
+
+.red{
+background:#ff0000;
+}
+
+.yellow{
+background:#ffd400;
+}
+
+.blue{
+background:#00d9ff;
+}
+
+.green{
+background:#00d63b;
+}
+
+.qris-title{
+font-size:42px;
+font-weight:900;
+line-height:1;
+text-transform:uppercase;
+margin-bottom:10px;
+color:#111;
+}
+
+.qris-sub{
+background:#ff0000;
+display:inline-block;
+padding:10px 18px;
 font-size:26px;
+font-weight:900;
+color:white;
+border:4px solid #000;
+box-shadow:6px 6px 0 #000;
+margin-bottom:20px;
 }
 
 .qris-box{
 background:white;
-padding:18px;
-border-radius:20px;
+padding:20px;
+border-radius:24px;
+border:4px solid #000;
+text-align:center;
+margin-bottom:20px;
 }
 
 .qris-box img{
@@ -270,19 +352,81 @@ width:100%;
 max-width:280px;
 }
 
-/* CHECKBOX */
+.payment-total-box{
+background:#ffe600;
+padding:18px;
+border-radius:20px;
+border:4px solid #000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-weight:900;
+font-size:22px;
+margin-bottom:22px;
+box-shadow:8px 8px 0 #000;
+}
+
+.upload-box{
+border:4px dashed #000;
+border-radius:24px;
+padding:28px;
+background:white;
+text-align:center;
+margin-top:15px;
+position:relative;
+}
+
+.upload-box label{
+display:block;
+font-size:20px;
+font-weight:900;
+margin-bottom:15px;
+}
+
+.upload-box input{
+width:100%;
+padding:14px;
+border-radius:14px;
+border:2px solid #000;
+background:#f5f5f5;
+font-weight:700;
+}
 
 .check-area{
 display:flex;
 align-items:flex-start;
-gap:10px;
-margin-top:18px;
+gap:12px;
+margin-top:22px;
 font-size:14px;
+background:white;
+padding:18px;
+border-radius:20px;
+border:3px solid #000;
 }
 
 .check-area input{
 margin-top:4px;
-transform:scale(1.2);
+transform:scale(1.3);
+}
+
+.payment-btn{
+width:100%;
+height:64px;
+border:none;
+border-radius:22px;
+background:#ff0000;
+color:white;
+font-size:19px;
+font-weight:900;
+cursor:pointer;
+transition:.3s;
+margin-top:25px;
+border:4px solid #000;
+box-shadow:10px 10px 0 #000;
+}
+
+.payment-btn:hover{
+transform:translateY(-3px);
 }
 
 /* LOADING */
@@ -396,6 +540,32 @@ grid-template-columns:1fr;
 
 .banner{
 height:220px;
+}
+
+}
+
+@media(max-width:700px){
+
+.payment-head h2{
+font-size:28px;
+}
+
+.qris-title{
+font-size:30px;
+}
+
+.qris-sub{
+font-size:18px;
+}
+
+.timer{
+font-size:42px;
+}
+
+.payment-total-box{
+font-size:17px;
+flex-direction:column;
+gap:10px;
 }
 
 }
@@ -558,8 +728,8 @@ SELANJUTNYA
 <div class="payment-page" id="paymentPage">
 
 <div class="payment-head">
-<h2>Metode Pembayaran</h2>
-<p>Silakan selesaikan pembayaran QRIS</p>
+<h2>QRIS PAYMENT</h2>
+<p>POLIPONI BALI 2026 • SHEILA ON 7 • HINDIA • FEAST</p>
 </div>
 
 <div class="payment-method">
@@ -573,33 +743,54 @@ SELANJUTNYA
 
 <div class="qris-banner">
 
-<h2>SCAN QRIS PEMBAYARAN</h2>
+<div class="qris-top">
+<div class="color-box red"></div>
+<div class="color-box yellow"></div>
+<div class="color-box blue"></div>
+<div class="color-box green"></div>
+</div>
+
+<div class="qris-title">
+POLIPONI BALI
+</div>
+
+<div class="qris-sub">
+SCAN QRIS SEKARANG
+</div>
 
 <div class="qris-box">
 <img src="qris-bayar.png">
 </div>
 
-</div>
-
-<div class="summary-line">
-<span>Total Pembayaran</span>
+<div class="payment-total-box">
+<span>TOTAL PEMBAYARAN</span>
 <span id="paymentTotal">Rp0</span>
 </div>
 
-<div class="input-group" style="margin-top:20px;">
-<label>Upload Bukti Pembayaran *</label>
-<input type="file" id="bukti">
+</div>
+
+<!-- UPLOAD -->
+
+<div class="upload-box">
+
+<label>
+UPLOAD BUKTI PEMBAYARAN
+</label>
+
+<input type="file" id="bukti" accept="image/*">
+
 </div>
 
 <div class="check-area">
 <input type="checkbox" id="confirmCheck">
+
 <label for="confirmCheck">
-Saya memastikan data yang diisi sudah benar dan pembayaran telah dilakukan sesuai nominal.
+Saya memastikan pembayaran sudah dilakukan sesuai nominal dan data pembelian sudah benar.
 </label>
 </div>
 
-<button class="btn" onclick="processPayment()">
-BAYAR SEKARANG
+<button class="payment-btn" onclick="processPayment()">
+KONFIRMASI PEMBAYARAN
 </button>
 
 </div>
